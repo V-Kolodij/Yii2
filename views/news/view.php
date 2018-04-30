@@ -15,14 +15,21 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a(Yii::t('app', 'Оновити'), ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a(Yii::t('app', 'Видалити'), ['delete', 'id' => $model->id], [
+        <?php
+            if( Yii::$app->user->isGuest)
+            { // троха поговнокодимо)))
+            echo "Оновити та видалити новину можуть тільки зареєстровані користувачі.<br><a href='".$_SERVER['PHP_SELF']."?r=site/login'>Зареєструватися</a>";
+            }else{ 
+            echo Html::a(Yii::t('app', 'Оновити'), ['update', 'id' => $model->id], ['class' => 'btn btn-primary']);
+            echo Html::a(Yii::t('app', 'Видалити'), ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [
                 'confirm' => Yii::t('app', 'Are you sure you want to delete this item?'),
                 'method' => 'post',
-            ],
-        ]) ?>
+                ],
+            ]);
+            }; 
+        ?>
     </p>
 
     <?= DetailView::widget([
