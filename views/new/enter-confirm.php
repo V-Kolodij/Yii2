@@ -6,5 +6,5 @@ $this->params['breadcrumbs'][] = $this->title;
 echo "<h3>You indicated this DATA:</h3>";
 echo Html::encode($model->name).'<br>';
 echo Html::encode($model->email).'<br>';?>
-<?= $model->phone_number ?>
+<?= Html::encode($model->phone_number); ?>
 
