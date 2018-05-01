@@ -35,7 +35,9 @@ $this->params['breadcrumbs'][] = $this->title;
             'description:ntext',
             'content:ntext',
 
-            ['class' => 'yii\grid\ActionColumn'],
+            Yii::$app->user->isGuest ?(['class' => 'yii\grid\ActionColumn', 
+            'template' =>'{view}']):(
+            ['class' => 'yii\grid\ActionColumn'])
         ],
     ]); ?>
 </div>
