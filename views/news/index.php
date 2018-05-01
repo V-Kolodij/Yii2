@@ -16,12 +16,9 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?php if( Yii::$app->user->isGuest)
-        { //троха поговнокодимо)))
-            echo "Добавити новину можуть тільки зареєстровані користувачі.<br><a href='".$_SERVER['PHP_SELF']."?r=site/login'>Зареєструватися</a>";
-           }else{  
-         echo Html::a(Yii::t('app', 'Create News'), ['create'], ['class' => 'btn btn-success']);};
-         ?>
+        <?php 
+         echo Html::a(Yii::t('app', 'Create News'), ['create'], ['class' => 'btn btn-success']);
+        ?>
     </p>
 
     <?= GridView::widget([
