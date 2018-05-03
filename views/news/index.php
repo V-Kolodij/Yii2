@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel app\models\NewsSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = Yii::t('app', 'News');
+$this->title = Yii::t('app', 'Новини');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="news-index">
@@ -20,20 +20,20 @@ $this->params['breadcrumbs'][] = $this->title;
         { //троха поговнокодимо)))
             echo "Добавити новину можуть тільки зареєстровані користувачі.<br><a href='".$_SERVER['PHP_SELF']."?r=site/login'>Зареєструватися</a>";
            }else{  
-         echo Html::a(Yii::t('app', 'Create News'), ['create'], ['class' => 'btn btn-success']);};
+         echo Html::a(Yii::t('app', 'Добавити новину'), ['create'], ['class' => 'btn btn-success']);};
          ?>
     </p>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
+        //'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
+            //'id',
             'title',
             'description:ntext',
-            'content:ntext',
+            //'content:ntext',
 
             Yii::$app->user->isGuest ?(['class' => 'yii\grid\ActionColumn', 
             'template' =>'{view}']):(

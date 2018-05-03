@@ -8,6 +8,7 @@ use app\models\NewsSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\data\Pagination;
 
 /**
  * NewsController implements the CRUD actions for News model.
@@ -108,6 +109,26 @@ class NewsController extends Controller
 
         return $this->redirect(['index']);
     }
+// мій код
+    public function actionTest()
+    {
+        $query = News::find();
+        /*$pagination = new Pagination([
+            'defaultPageSize' => 5,
+            'totalCount' => $query->count(),
+        ]);*/
+
+        $news = $query->all();//orderBy('title')
+            //->offset($pagination->offset)
+            //->limit($pagination->limit)
+            //->all();
+
+        return $this->render('test', [
+            'news' => $news,
+            //'pagination' => $pagination,
+        ]);
+
+    }    
 
     /**
      * Finds the News model based on its primary key value.
